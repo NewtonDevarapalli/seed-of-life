@@ -40,6 +40,44 @@ interface RenderPlaylist extends PlaylistApi {
   playlistUrl: string;
 }
 
+const FALLBACK_PLAYLISTS: PlaylistApi[] = [
+  {
+    id: 'PLx1gTW_5-wSUp8BpM_DRaRK-EvoNJnhpJ',
+    title: '21 Days Intense Fasting Prayer | December 2025',
+    description: '',
+    thumbnailUrl: 'https://i.ytimg.com/vi/7mUtlXX45xQ/hqdefault.jpg',
+    itemCount: 15
+  },
+  {
+    id: 'PLx1gTW_5-wSX5V4CGotuyOe7Mo2-jBdSg',
+    title: 'Shorts',
+    description: '',
+    thumbnailUrl: 'https://i.ytimg.com/vi/m5I74xNTnUs/hqdefault.jpg',
+    itemCount: 30
+  },
+  {
+    id: 'PLx1gTW_5-wSVS3AsI4L19tkxxgNrI0rhJ',
+    title: 'Sunday Sermons',
+    description: '',
+    thumbnailUrl: 'https://i.ytimg.com/vi/B19fyzVEKWQ/hqdefault.jpg',
+    itemCount: 19
+  },
+  {
+    id: 'PLx1gTW_5-wSXFr6r4VtEmMWUSn_Gw-lHX',
+    title: 'Ads',
+    description: '',
+    thumbnailUrl: 'https://i.ytimg.com/vi/9fJIvio-N5A/hqdefault.jpg',
+    itemCount: 14
+  },
+  {
+    id: 'PLx1gTW_5-wSUlvuBiHYqpUjm4Ke59YoXU',
+    title: 'Testimonies',
+    description: '',
+    thumbnailUrl: 'https://i.ytimg.com/vi/WQdy2TPh5EI/hqdefault.jpg',
+    itemCount: 16
+  }
+];
+
 @Component({
   selector: 'app-involved',
   standalone: true,
@@ -74,13 +112,14 @@ export class MinistriesComponent implements OnInit {
 
     try {
       const directPlaylists = await this.fetchPlaylistsDirectFromYouTube();
-      this.playlists = this.toRenderablePlaylists(directPlaylists);
-      if (!this.playlists.length) {
-        this.playlistsError = 'No playlists available right now.';
+      if (directPlaylists.length) {
+        this.playlists = this.toRenderablePlaylists(directPlaylists);
+      } else {
+        this.playlists = this.toRenderablePlaylists(FALLBACK_PLAYLISTS);
       }
     } catch {
-      this.playlists = [];
-      this.playlistsError = 'Unable to load playlists right now.';
+      this.playlists = this.toRenderablePlaylists(FALLBACK_PLAYLISTS);
+      this.playlistsError = '';
     } finally {
       this.isPlaylistsLoading = false;
     }
