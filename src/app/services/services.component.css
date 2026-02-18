@@ -4,6 +4,7 @@
 .home-section {
   background-color: #000;
   color: #fff;
+  padding: 56px 20px;
 }
 
 .section-title {
@@ -18,7 +19,7 @@
 /* Event card container */
 .event-card {
   position: relative;
-  height: 220px;
+  height: 228px;
   border-radius: 15px;
   background-size: cover;
   background-position: center;
@@ -41,7 +42,7 @@
   top: 0; left: 0;
   width: 100%; height: 100%;
   padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+  background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.15));
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -57,22 +58,23 @@
 .event-card p {
   margin: 0;
   font-size: 0.95rem;
+  line-height: 1.45;
   color: #f1f1f1;
 }
 
 /* Backgrounds per event */
-.event-card.sunday       { background-image: url('../../assets/events/sunday-worship.jpg'); }
-.event-card.communion    { background-image: url('../../assets/events/communion.jpg'); }
-.event-card.deliverance  { background-image: url('../../assets/events/deliverance.jpg'); }
-.event-card.night-prayer { background-image: url('../../assets/events/night-prayer.jpg'); }
-.event-card.mens-prayer  { background-image: url('../../assets/events/mens-prayer.jpg'); }
+.event-card.sunday { background-image: url('/assets/events/sunday-worship.jpg'); }
+.event-card.communion { background-image: url('/assets/events/communion.jpg'); }
+.event-card.deliverance { background-image: url('/assets/events/deliverance.jpg'); }
+.event-card.night-prayer { background-image: url('/assets/events/night-prayer.jpg'); }
+.event-card.mens-prayer { background-image: url('/assets/events/mens-prayer.jpg'); }
 
 /* -----------------------------
    RESPONSIVE STYLES
 ----------------------------- */
 @media (max-width: 1024px) {
   .event-card {
-    height: 200px;
+    height: 208px;
   }
   .event-card h5 {
     font-size: 1.1rem;
@@ -87,7 +89,7 @@
     font-size: 1.7rem;
   }
   .event-card {
-    height: 180px;
+    height: 188px;
     margin-bottom: 20px;
   }
   .event-card h5 {
@@ -103,7 +105,7 @@
     font-size: 1.5rem;
   }
   .event-card {
-    height: 150px;
+    height: 162px;
   }
   .event-card h5 {
     font-size: 0.95rem;

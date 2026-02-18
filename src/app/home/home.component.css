@@ -1,238 +1,213 @@
-/* 🌍 GLOBAL BASE STYLES */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
-  color: #e0e0e0;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* prevent sideways scroll on mobile */
-}
-
-section {
-  text-align: center;
-  padding: 80px 20px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  color: #f4c542;
-  margin-bottom: 20px;
-}
-
-p {
-  color: #cfcfcf;
-  line-height: 1.6;
-}
-
-/* 🖤 General Section Background */
 .home-section {
   background-color: #000;
   color: #fff;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-/* 🎬 HERO SECTION */
 .hero {
   position: relative;
+  width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
+  background: #000;
 }
 
 .hero-video {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  z-index: -1;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-fallback {
+  display: none;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.62);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 30px;
-  gap: 12px;
+  padding: 30px 20px;
   box-sizing: border-box;
+  gap: 14px;
 }
 
 .hero-overlay h1 {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  margin-bottom: 20px;
+  margin: 0;
+  font-size: clamp(1.9rem, 4.2vw, 3.2rem);
+  color: #efe8e8de;
+  line-height: 1.15;
 }
 
 .hero-overlay p {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  margin-bottom: 30px;
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  color: #e2e2e2;
+  line-height: 1.6;
 }
 
-/* ✨ BUTTON STYLES */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
 a.cta {
   display: inline-block;
   padding: 10px 22px;
   background: #ffcc00;
   color: #000;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
-  border-radius: 6px;
-  transition: 0.3s;
-  animation: fadeIn 0.6s ease-in-out;
-  white-space: nowrap;
+  border-radius: 8px;
+  transition: all 0.25s ease;
 }
 
 a.cta:hover {
-  background: #ffd900;
-  color: #fff;
+  background: #ffdc4b;
+  color: #111;
+  transform: translateY(-1px);
 }
 
 a.cta.secondary {
   background: #8f8042;
-  color: #000;
-  animation: fadeIn 0.8s ease-in-out;
+  color: #fff;
 }
 
 a.cta.secondary:hover {
-  background: #fffb00;
+  background: #a79654;
+  color: #fff;
 }
 
-/* 🔴 LIVE BADGE */
 .live-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #ff0000;
-  color: white;
-  font-weight: bold;
+  background: #c61a1a;
+  color: #fff;
+  font-weight: 700;
   padding: 6px 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-  font-size: 14px;
-  flex-wrap: wrap;
+  border-radius: 999px;
 }
 
 .live-badge .dot {
-  height: 10px;
   width: 10px;
-  background-color: white;
+  height: 10px;
+  background: #fff;
   border-radius: 50%;
-  display: inline-block;
   animation: pulse 1.5s infinite;
 }
 
 .live-badge .live-btn {
-  padding: 6px 12px;
-  font-size: 13px;
   background: #fff;
-  color: #ff0000;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
+  color: #8d1313;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
 }
 
 .live-badge .live-btn:hover {
-  background: #ffe5e5;
+  background: #ffe9e9;
+  color: #761111;
 }
 
-/* 🏛️ VENUE, PARTNER & CONTACT */
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 700;
+  color: #e3bf2e;
+  text-shadow: 0 0 10px #514b35;
+  text-align: center;
+}
+
 .info-box {
-  background: #000;
+  background: linear-gradient(180deg, #080808 0%, #121212 100%);
   color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  max-width: 400px;
+  border: 1px solid rgba(227, 191, 46, 0.25);
+  border-radius: 12px;
+  padding: 22px;
+  max-width: 650px;
   margin: 20px auto;
-  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .info-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(227, 191, 46, 0.2);
 }
 
-/* 💛 Glow Button */
+.info-box p {
+  margin-bottom: 8px;
+  color: #dfdfdf;
+}
+
 .glow-btn {
   background-color: #d2be72;
   color: #000;
-  font-weight: bold;
+  font-weight: 700;
   border-radius: 30px;
   padding: 10px 20px;
-  transition: 0.3s;
-  text-transform: uppercase;
-  box-shadow: 0 0 10px #e8d58966, 0 0 20px #f1dd8f66;
-  display: inline-block;
+  border: 1px solid rgba(227, 191, 46, 0.55);
+  box-shadow: 0 0 10px #e8d58966;
 }
 
 .glow-btn:hover {
   background-color: #000;
   color: #f1dd91;
-  box-shadow: 0 0 20px #e7d48c, 0 0 40px #e6d37e;
+  border-color: #f1dd91;
 }
 
-/* 🎇 SECTION TITLES */
-.section-title {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: bold;
-  color: #e3bf2e;
-  text-shadow: 0 0 10px #514b35, 0 0 20px #8e8665;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-/* ✨ ANIMATIONS */
 @keyframes pulse {
   0% { transform: scale(0.9); opacity: 0.7; }
   50% { transform: scale(1.1); opacity: 1; }
   100% { transform: scale(0.9); opacity: 0.7; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 📱 RESPONSIVE FIXES */
-@media (max-width: 767px) {
-  section {
-    padding: 60px 16px;
-  }
-
-  .hero {
-    min-height: 90vh;
+@media (max-width: 768px) {
+  .hero-video {
+    object-position: 70% center;
   }
 
   .hero-overlay {
-    padding: 20px;
+    padding: 20px 16px;
   }
 
+  .hero-actions {
+    width: 100%;
+  }
+
+  .live-badge {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  a.cta {
+    width: min(92%, 360px);
+  }
+}
+
+@media (max-width: 480px) {
   .hero-overlay h1 {
     font-size: 1.8rem;
   }
 
   .hero-overlay p {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
 
   .info-box {
-    width: 90%;
-  }
-
-  a.cta, .glow-btn {
-    font-size: 0.9rem;
-    padding: 8px 18px;
+    width: 95%;
+    padding: 18px;
   }
 }

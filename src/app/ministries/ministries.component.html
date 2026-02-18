@@ -44,4 +44,23 @@
       </div>
     </div>
   </div>
+
+  <div class="playlist-block">
+    <h3 class="playlist-title">Ministry Playlists</h3>
+    <p class="playlist-subtitle">Watch curated YouTube playlists for teachings, worship, and ministry sessions.</p>
+
+    <p class="playlist-state" *ngIf="isPlaylistsLoading">Loading playlists...</p>
+    <p class="playlist-state" *ngIf="!isPlaylistsLoading && playlistsError && !playlists.length">{{ playlistsError }}</p>
+
+    <div class="playlist-grid" *ngIf="!isPlaylistsLoading && playlists.length">
+      <article class="playlist-card" *ngFor="let playlist of playlists; trackBy: trackByPlaylistId">
+        <img [src]="playlist.thumbnailUrl" [alt]="playlist.title" loading="lazy">
+        <div class="playlist-meta">
+          <h4>{{ playlist.title }}</h4>
+          <p>{{ playlist.itemCount }} videos</p>
+          <a [href]="playlist.playlistUrl" target="_blank" rel="noopener">Open Playlist</a>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>

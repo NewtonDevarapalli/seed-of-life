@@ -1,22 +1,68 @@
 <section class="sermons-container">
   <h2>Words of Wisdom</h2>
 
-  <div class="video-player">
-    <iframe
-      [src]="trustedUrls[activeIndex]"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
+  <div class="filters" role="tablist" aria-label="Sermon filters">
+    <button
+      *ngFor="let filter of filters"
+      type="button"
+      class="filter-chip"
+      [class.active]="activeFilter === filter.value"
+      (click)="setFilter(filter.value)">
+      {{ filter.label }}
+    </button>
   </div>
 
-  <div class="dots-container">
-    <span
-      *ngFor="let video of videos; let i = index"
-      [class.active]="i === activeIndex"
-      (click)="goToVideo(i)">
-    </span>
-  </div>
+  <p class="state-text" *ngIf="isLoading">Loading sermons...</p>
+  <p class="state-text" *ngIf="!isLoading && errorMessage && !filteredVideos.length">{{ errorMessage }}</p>
+  <p class="state-text" *ngIf="!isLoading && !errorMessage && !filteredVideos.length">
+    No sermons found for this filter.
+  </p>
 
-  <p class="video-title">{{ videos[activeIndex].title }}</p>
+  <ng-container *ngIf="!isLoading && selectedVideo">
+    <div class="video-player">
+      <iframe
+        [src]="selectedVideo.embedUrl"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <p class="video-title">{{ selectedVideo.title }}</p>
+
+    <div class="carousel-shell">
+      <button
+        type="button"
+        class="carousel-nav"
+        aria-label="Scroll left"
+        (click)="scrollCarousel(-1)">
+        &#10094;
+      </button>
+
+      <div class="video-row" #carouselRow>
+        <button
+          *ngFor="let video of filteredVideos; trackBy: trackByVideoId"
+          type="button"
+          class="video-card"
+          [class.active]="selectedVideo.id === video.id"
+          (click)="selectVideo(video)">
+          <img [src]="video.thumbnailUrl" [alt]="video.title" loading="lazy">
+          <span class="card-title">{{ video.title }}</span>
+          <span class="card-badge">{{ video.isShort ? 'Short' : 'Video' }}</span>
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="carousel-nav"
+        aria-label="Scroll right"
+        (click)="scrollCarousel(1)">
+        &#10095;
+      </button>
+    </div>
+  </ng-container>
+
+  <div class="video-player placeholder-player" *ngIf="!isLoading && !selectedVideo && !errorMessage">
+    <div class="placeholder-text">No sermon video available.</div>
+  </div>
 </section>

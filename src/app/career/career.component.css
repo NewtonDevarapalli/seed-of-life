@@ -33,6 +33,10 @@
   overflow-x: hidden; /* prevent horizontal scrolling */
 }
 
+.volunteers-section {
+  margin-top: 72px;
+}
+
 /* -----------------------------
    JOB LISTINGS GRID
 ----------------------------- */
@@ -127,6 +131,8 @@
   border-radius: 12px;
   width: 90%;
   max-width: 500px;
+  max-height: min(90vh, 720px);
+  overflow-y: auto;
   text-align: left;
   position: relative;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
@@ -147,6 +153,11 @@
   border-radius: 6px;
   color: #fff;
   resize: none;
+  font-size: 1rem;
+}
+
+.modal-content textarea {
+  min-height: 110px;
 }
 
 .btn-submit {
@@ -209,6 +220,7 @@
     width: 90%;
     max-width: 380px;
     padding: 20px;
+    max-height: min(86vh, 620px);
   }
 
   .section-title {
@@ -238,5 +250,10 @@
   .modal-content {
     max-width: 320px;
     padding: 15px;
+  }
+
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 16px; /* Prevent iOS zoom and keep typing comfortable */
   }
 }

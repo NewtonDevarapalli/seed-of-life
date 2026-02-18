@@ -4,7 +4,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` to start both Angular + API together.
+If needed, you can also run them separately with `npm run start:web` and `npm run start:api`.
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any source files.
+
+### YouTube API key setup (server-side)
+1. Copy `.env.example` to `.env`.
+2. Set `YOUTUBE_API_KEY` in `.env`.
+3. Keep `.env` out of git (already ignored).
+
+### GitHub Pages deployment safety
+- GitHub Pages is static, so `/api` endpoints are not hosted there.
+- The app now uses fallback order: `Backend API -> direct YouTube API (assets/env.js) -> built-in fallback videos`.
+- For full live + full sermons list on GitHub Pages, set a **restricted browser key** in `src/assets/env.js`:
+  - Restrict by HTTP referrer to `https://www.seedoflifeinternational.org/*` and `https://newtondevarapalli.github.io/*`.
 
 ## Code scaffolding
 

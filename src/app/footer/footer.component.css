@@ -1,78 +1,52 @@
-/* ------------------------------------ 🌙 FOOTER SECTION ------------------------------------ */
-footer {
-  background: #24272d; /* dark background */
-  color: #fff; /* white text */
+.site-footer {
+  background: #070707;
+  color: #ddd;
   text-align: center;
-  padding: 40px 20px;
+  padding: 34px 16px 28px;
   width: 100%;
   box-sizing: border-box;
+  border-top: 1px solid rgba(227, 191, 46, 0.2);
 }
 
-/* Footer links */
-footer a {
-  color: #ffffffaa; /* semi-transparent white */
-  margin: 0 15px; /* Increased spacing between links */
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease; /* Added transition for smooth scaling */
-  display: inline-block;
-  font-weight: 500; /* Slightly bold for modern look */
-  padding: 8px 12px; /* Padding around the link */
-  border-radius: 25px; /* Rounded corners */
-}
-
-/* Hover effect for links */
-footer a:hover {
-  color: #fff; /* Full white text on hover */
-  transform: translateY(-3px); /* Slight lift effect */
-  background-color: #333; /* Subtle background color change */
-}
-
-/* Footer text (optional small copyright) */
-footer p {
-  font-size: 0.95rem;
-  margin-top: 15px;
-  color: #ccc;
-  line-height: 1.5;
-}
-
-/* Social icons or links container */
-.footer-links {
+.footer-links,
+.footer-social {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Increased gap between links for a modern look */
-  margin-bottom: 10px;
+  gap: 10px;
+  margin: 0 auto 10px;
+  max-width: 1080px;
 }
 
-/* ------------------------------------ 📱 MOBILE RESPONSIVE DESIGN ------------------------------------ */
+.site-footer a {
+  color: #e3dcc7;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.site-footer a:hover,
+.site-footer a.active {
+  color: #ffd700;
+  background: rgba(227, 191, 46, 0.13);
+}
+
+.footer-copy {
+  margin-top: 14px;
+  margin-bottom: 0;
+  color: #b8b8b8;
+  font-size: 0.92rem;
+}
+
 @media (max-width: 767px) {
-  footer {
-    padding: 30px 15px;
+  .site-footer {
+    padding: 28px 14px 22px;
   }
-  .footer-links {
-    flex-direction: column; /* Stack links vertically */
-    gap: 12px; /* Spacing between stacked links */
-  }
-  footer a {
-    margin: 5px 0;
-    font-size: 1rem;
-    padding: 10px 15px; /* Increased padding on mobile */
-  }
-  footer p {
-    font-size: 0.9rem;
-  }
-}
 
-/* ------------------------------------ 💻 TABLET RESPONSIVE DESIGN ------------------------------------ */
-@media (min-width: 768px) and (max-width: 1024px) {
-  footer {
-    padding: 35px 20px;
-  }
-  .footer-links {
-    gap: 15px; /* Slightly more space between links on tablets */
-  }
-  footer a {
-    font-size: 1rem;
-    padding: 10px 15px; /* Increased padding on tablets */
+  .site-footer a {
+    font-size: 0.92rem;
+    padding: 6px 9px;
   }
 }

@@ -1,43 +1,63 @@
 <!-- Hero Section -->
 <section class="hero">
-  <video autoplay loop muted playsinline class="hero-video">
-    <source src="assets/worship-background-video.mp4" type="video/mp4">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto">
+    <source src="assets/background-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+  <img
+    src="assets/SeedOfLifeLogo.JPG"
+    class="hero-fallback"
+    alt="Worship Background" />
+
   <div class="hero-overlay">
-    <h1><b>Seed Of Life Ministries</b></h1>
-    <p><b>The heaven on earth where you can worship, pray, and feel the Holy Spirit presence.</b></p>
-    <!-- Show these right after the paragraph -->
-    <div *ngIf="isLive" class="live-badge">
-      <span class="dot"></span> Live on YouTube
-        <a *ngIf="isLive"
-            href="https://www.youtube.com/@devarapallinewton4185/live"
-            class="cta live-btn" target="_blank">
-             Watch Live
+    <h1>Seed Of Life Ministries</h1>
+    <p>Heaven on earth where you can worship, pray, and experience the Holy Spirit's presence.</p>
+
+    <div class="hero-actions">
+      <div *ngIf="isLive" class="live-badge">
+        <span class="dot"></span> Live on YouTube
+        <a
+          *ngIf="isLive"
+          href="https://www.youtube.com/@pastortriveni/live"
+          class="cta live-btn"
+          target="_blank"
+          rel="noopener">
+          Watch Live
         </a>
+      </div>
+
+      <a
+        href="https://youtu.be/DdVf0xgjUAI?si=eSnpjpklgh3mXfkx"
+        class="cta secondary"
+        target="_blank"
+        rel="noopener">
+        Watch Sis. Triveni Testimony
+      </a>
     </div>
-    <!-- Always available -->
-    <a href="https://youtu.be/DdVf0xgjUAI?si=eSnpjpklgh3mXfkx" 
-       class="cta secondary" target="_blank">
-      Watch Sis.Triveni Testimony
-    </a>
   </div>
 </section>
- <!-- Sermons -->
+
 <app-sermons></app-sermons>
-<!-- Events -->
- <app-services></app-services>
-<!-- Venue -->
+
+<app-services></app-services>
+
 <section class="py-5 fade-in home-section">
   <h2 class="section-title">Our Venue</h2>
   <div class="container mt-4">
     <div class="info-box text-center">
-      <p>📌 Seed Of Life Worship Centre - 2nd floor, Above Rynox Showroom</p>
+      <p>Location: Seed Of Life Worship Centre - 2nd floor, Above Rynox Showroom</p>
       <p>Beside Adidas building, Tirumalagiri, Secunderabad</p>
     </div>
   </div>
 </section>
-<!-- Give -->
+
 <section class="py-5 fade-in home-section text-center">
   <h2 class="section-title">Partner With Us</h2>
   <div class="container mt-4">
@@ -57,9 +77,8 @@
   </div>
 </section>
 
-<!-- Contact -->
 <section class="py-5 fade-in home-section">
-  <h2 class="section-title">We’d Love To Hear From You</h2>
+  <h2 class="section-title">We'd Love To Hear From You</h2>
   <div class="container mt-4">
     <div class="info-box text-center">
       <p>
@@ -76,4 +95,3 @@
     </div>
   </div>
 </section>
-

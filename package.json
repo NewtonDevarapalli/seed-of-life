@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently -k \"npm:start:api\" \"npm:start:web\"",
+    "start:web": "ng serve --proxy-config proxy.conf.json",
+    "start:api": "node server/index.js",
     "build": "ng build",
     "deploy": "ng build --configuration production --base-href=/ && npx angular-cli-ghpages --dir=dist/seed-of-life/browser --cname=www.seedoflifeinternational.org",
     "test": "ng test"
@@ -22,6 +24,8 @@
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
     "emailjs-com": "^3.2.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -31,6 +35,7 @@
     "@angular/cli": "^18.2.11",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "concurrently": "^9.2.1",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

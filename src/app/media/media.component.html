@@ -1,1 +1,76 @@
-<p>media works!</p>
+<section class="media-page">
+  <div class="media-header">
+    <h2 class="section-title">Media Hub</h2>
+    <p class="section-subtitle">
+      Explore sermons, shorts, and playlists from Seed Of Life Ministries in one place.
+    </p>
+  </div>
+
+  <div class="related-grid">
+    <article class="related-card" *ngFor="let item of relatedContent">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+      <a [href]="item.href" target="_blank" rel="noopener">{{ item.cta }}</a>
+    </article>
+  </div>
+
+  <div class="videos-section">
+    <h3 class="block-title">YouTube Videos</h3>
+
+    <div class="filters" role="tablist" aria-label="Media filters">
+      <button
+        *ngFor="let filter of filters"
+        type="button"
+        class="filter-chip"
+        [class.active]="activeFilter === filter.value"
+        (click)="setFilter(filter.value)">
+        {{ filter.label }}
+      </button>
+    </div>
+
+    <p class="state-text" *ngIf="isVideosLoading">Loading videos...</p>
+    <p class="state-text" *ngIf="!isVideosLoading && videosError && !filteredVideos.length">{{ videosError }}</p>
+
+    <ng-container *ngIf="!isVideosLoading && selectedVideo">
+      <div class="video-player">
+        <iframe
+          [src]="selectedVideo.embedUrl"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="selected-title">{{ selectedVideo.title }}</p>
+
+      <div class="video-grid">
+        <button
+          type="button"
+          class="video-card"
+          *ngFor="let video of filteredVideos; trackBy: trackByVideoId"
+          [class.active]="selectedVideo.id === video.id"
+          (click)="selectVideo(video)">
+          <img [src]="video.thumbnailUrl" [alt]="video.title" loading="lazy">
+          <span class="card-title">{{ video.title }}</span>
+          <span class="card-badge">{{ video.isShort ? 'Short' : 'Video' }}</span>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="playlists-section">
+    <h3 class="block-title">YouTube Playlists</h3>
+    <p class="state-text" *ngIf="isPlaylistsLoading">Loading playlists...</p>
+    <p class="state-text" *ngIf="!isPlaylistsLoading && playlistsError && !playlists.length">{{ playlistsError }}</p>
+
+    <div class="playlist-grid" *ngIf="!isPlaylistsLoading && playlists.length">
+      <article class="playlist-card" *ngFor="let playlist of playlists; trackBy: trackByPlaylistId">
+        <img [src]="playlist.thumbnailUrl" [alt]="playlist.title" loading="lazy">
+        <div class="playlist-meta">
+          <h4>{{ playlist.title }}</h4>
+          <p>{{ playlist.itemCount }} videos</p>
+          <a [href]="playlist.playlistUrl" target="_blank" rel="noopener">Open Playlist</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
